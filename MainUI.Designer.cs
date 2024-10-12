@@ -91,7 +91,7 @@
             this.mainTabs.Controls.Add(this.mainToDo);
             this.mainTabs.Controls.Add(this.completedToDos);
             this.mainTabs.Controls.Add(this.prefpanel);
-            this.mainTabs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mainTabs.Cursor = System.Windows.Forms.Cursors.Default;
             this.mainTabs.IsDerivedStyle = true;
             this.mainTabs.ItemSize = new System.Drawing.Size(100, 38);
             this.mainTabs.Location = new System.Drawing.Point(15, 98);
@@ -189,6 +189,7 @@
             this.btn_edittodo.Text = "Edit ToDo!";
             this.btn_edittodo.ThemeAuthor = "Narwin";
             this.btn_edittodo.ThemeName = "MetroDark";
+            this.btn_edittodo.Click += new System.EventHandler(this.btn_edittodo_Click);
             // 
             // btn_deltodo
             // 
@@ -242,6 +243,7 @@
             this.btn_complete.Text = "Complete ToDo";
             this.btn_complete.ThemeAuthor = "Narwin";
             this.btn_complete.ThemeName = "MetroDark";
+            this.btn_complete.Click += new System.EventHandler(this.btn_complete_Click);
             // 
             // todoDevider
             // 
@@ -390,7 +392,7 @@
             this.mtd_helper.Style = MetroSet_UI.Enums.Style.Dark;
             this.mtd_helper.StyleManager = this.styleManager1;
             this.mtd_helper.TabIndex = 2;
-            this.mtd_helper.Text = "Metro ToDo v.1.0";
+            this.mtd_helper.Text = "Metro ToDo v.0.1beta";
             this.mtd_helper.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.mtd_helper.ThemeAuthor = "Narwin";
             this.mtd_helper.ThemeName = "MetroDark";

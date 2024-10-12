@@ -47,8 +47,8 @@
             this.metroSetButton1.IsDerivedStyle = true;
             this.metroSetButton1.Location = new System.Drawing.Point(15, 202);
             this.metroSetButton1.Name = "metroSetButton1";
-            this.metroSetButton1.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.metroSetButton1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.metroSetButton1.NormalBorderColor = System.Drawing.Color.Navy;
+            this.metroSetButton1.NormalColor = System.Drawing.Color.Navy;
             this.metroSetButton1.NormalTextColor = System.Drawing.Color.White;
             this.metroSetButton1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.metroSetButton1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
@@ -82,11 +82,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.BorderColor = System.Drawing.Color.Yellow;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.ControlBox = false;
             this.Controls.Add(this.alertLabel);
             this.Controls.Add(this.metroSetButton1);
+            this.HeaderColor = System.Drawing.Color.Yellow;
             this.Name = "AlertOk";
+            this.SmallLineColor1 = System.Drawing.Color.Red;
+            this.SmallLineColor2 = System.Drawing.Color.Red;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Style = MetroSet_UI.Enums.Style.Dark;
             this.Text = "Alert Title";

@@ -25,7 +25,20 @@ namespace MetroToDo
             // show form about
         }
 
-        private void btn_addTodo_Click(object sender, EventArgs e)
+        private void showAlertOk(string title, string caption)
+        {
+            var alert = new Library.AlertOk(title, caption);
+            alert.Show();
+        }
+
+        /*
+         * Specific ToDo functions (Add, Delete, etc)
+         * 
+         * October 2024 - Ricardo Gunawan
+         * 
+         */ 
+
+        public void addToDo()
         {
             if (tb_todoInput.Text != "")
             {
@@ -36,22 +49,143 @@ namespace MetroToDo
             else
             {
                 // toggle alert
-                MessageBox.Show(this, "No Text to Add","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //MessageBox.Show(this, "No Text to Add","ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                showAlertOk("ERROR", "No Text to Add!");
+            }
+        }
+
+        public void deleteToDo()
+        {
+            if (lb_todo1.SelectedItem == null)
+            {
+                // toggle alert
+                showAlertOk("ERROR ToDo", "Please select ToDo First");
+                //MessageBox.Show(this, "Please select ToDo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //add toggle confirmation
+
+                try
+                {
+                    if (lb_todo1.SelectedIndex >= 0)
+                        lb_todo1.RemoveItemAt(lb_todo1.SelectedIndex);
+                    else
+                    {
+                        showAlertOk("ERROR ToDo", "Please select ToDo First");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(this, "ERROR - " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    showAlertOk("ERROR ToDo", "Please select ToDo First");
+
+                }
+            }
+        }
+
+        public void completeToDo()
+        {
+            if (lb_todo1.SelectedItem == null)
+            {
+                // toggle alert
+                showAlertOk("ERROR ToDo", "Please select ToDo First");
+                //MessageBox.Show(this, "Please select ToDo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                // check if completed
+
+                // set values
+                try
+                {
+
+                    var selectedTodo = lb_todo1.Items[lb_todo1.SelectedIndex].ToString();
+                    var completedToDo = "--(" + selectedTodo + ")-- Completed!";
+                    lb_todo1.Items[lb_todo1.SelectedIndex] = completedToDo;
+                }
+
+                catch (Exception e)
+                {
+                    showAlertOk("ERROR ToDo", "Please select ToDo First");
+                }
+            }
+        }
+
+        public void setEditMode()
+        {
+            tb_todoInput.Text = lb_todo1.Items[lb_todo1.SelectedIndex].ToString();
+            btn_edittodo.Text = "Cancel Edit";
+            btn_addTodo.Text = "Edit ToDo!";
+            btn_deltodo.Enabled = false;
+            btn_complete.Enabled = false;
+            lb_todo1.Enabled = false;
+        }
+
+        public void resetEditMode()
+        {
+            tb_todoInput.Text = "";
+            btn_edittodo.Text = "Edit ToDo!";
+            btn_addTodo.Text = "Add ToDo!";
+            btn_deltodo.Enabled = true;
+            btn_complete.Enabled = true;
+            lb_todo1.Enabled = true;
+        }
+
+        public void editToDo()
+        {
+            lb_todo1.Items[lb_todo1.SelectedIndex] = tb_todoInput.Text;
+            resetEditMode();
+        }
+
+        /*
+         * Common Form Events (Click, KeyDown, etc)
+         * 
+         * October 2024 - Ricardo Gunawan
+         * 
+         */
+
+        private void btn_addTodo_Click(object sender, EventArgs e)
+        {
+
+            if (btn_addTodo.Text.Equals("Add ToDo!"))
+            {
+                addToDo();
+            }
+            else
+            {
+                editToDo();
             }
         }
 
         private void btn_deltodo_Click(object sender, EventArgs e)
         {
-            if(lb_todo1.SelectedItem == null)
+            deleteToDo();
+        }
+
+        private void btn_complete_Click(object sender, EventArgs e)
+        {
+            completeToDo();
+        }
+
+        private void btn_edittodo_Click(object sender, EventArgs e)
+        {
+            if (lb_todo1.SelectedItem == null)
             {
                 // toggle alert
-                var alert = new Library.AlertOk("ERROR ToDo", "Please select ToDo First");
-                alert.Show();
-            //MessageBox.Show(this, "Please select ToDo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }else
+                showAlertOk("ERROR ToDo", "Please select ToDo First");
+                //MessageBox.Show(this, "Please select ToDo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
             {
-                //add toggle confirmation
-                lb_todo1.RemoveItemAt(lb_todo1.SelectedIndex);
+                if (btn_edittodo.Text.Equals("Edit ToDo!"))
+                {
+                    setEditMode();
+                }
+                else
+                {
+                    resetEditMode();
+                }
             }
         }
     }
