@@ -36,7 +36,7 @@ namespace MetroToDo
          * 
          * October 2024 - Ricardo Gunawan
          * 
-         */ 
+         */
 
         public void addToDo()
         {
@@ -99,10 +99,13 @@ namespace MetroToDo
                 // set values
                 try
                 {
-
                     var selectedTodo = lb_todo1.Items[lb_todo1.SelectedIndex].ToString();
-                    var completedToDo = "--(" + selectedTodo + ")-- Completed!";
-                    lb_todo1.Items[lb_todo1.SelectedIndex] = completedToDo;
+
+                    //var completedToDo = "--(" + selectedTodo + ")-- Completed!";
+                    //lb_todo1.Items[lb_todo1.SelectedIndex] = completedToDo;
+
+                    lb_completed.AddItem(selectedTodo);
+                    lb_todo1.RemoveItemAt(lb_todo1.SelectedIndex);
                 }
 
                 catch (Exception e)
@@ -134,8 +137,17 @@ namespace MetroToDo
 
         public void editToDo()
         {
-            lb_todo1.Items[lb_todo1.SelectedIndex] = tb_todoInput.Text;
-            resetEditMode();
+            if (lb_todo1.SelectedItem == null)
+            {
+                // toggle alert
+                showAlertOk("ERROR ToDo", "Please select ToDo First");
+                //MessageBox.Show(this, "Please select ToDo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                lb_todo1.Items[lb_todo1.SelectedIndex] = tb_todoInput.Text;
+                resetEditMode();
+            }
         }
 
         /*
@@ -187,6 +199,19 @@ namespace MetroToDo
                     resetEditMode();
                 }
             }
+        }
+
+        private void btn_clearlb1_Click(object sender, EventArgs e)
+        {
+            if(lb_todo1.Items.Count <= 0)
+            {
+                showAlertOk("Information", "The list is empty.");
+
+            }else
+            {
+                lb_todo1.Clear();
+            }
+
         }
     }
 }
