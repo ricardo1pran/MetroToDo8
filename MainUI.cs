@@ -150,6 +150,39 @@ namespace MetroToDo
             }
         }
 
+        /* ---------------- Completed ToDo ------------------ */
+
+        public void uncompleteToDo()
+        {
+            if (lb_completed.SelectedItem == null)
+            {
+                // toggle alert
+                showAlertOk("ERROR ToDo", "Please select Completed ToDo First");
+                //MessageBox.Show(this, "Please select ToDo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                // check if completed
+
+                // set values
+                try
+                {
+                    var selectedTodo = lb_completed.Items[lb_completed.SelectedIndex].ToString();
+
+                    //var completedToDo = "--(" + selectedTodo + ")-- Completed!";
+                    //lb_todo1.Items[lb_todo1.SelectedIndex] = completedToDo;
+
+                    lb_todo1.AddItem(selectedTodo);
+                    lb_completed.RemoveItemAt(lb_completed.SelectedIndex);
+                }
+
+                catch (Exception e)
+                {
+                    showAlertOk("ERROR ToDo", "Please select ToDo First");
+                }
+            }
+        }
+
         /*
          * Common Form Events (Click, KeyDown, etc)
          * 
@@ -212,6 +245,25 @@ namespace MetroToDo
                 lb_todo1.Clear();
             }
 
+        }
+        
+
+        private void btnC_ClearC_Click(object sender, EventArgs e)
+        {
+            if (lb_completed.Items.Count <= 0)
+            {
+                showAlertOk("Information", "The list is empty.");
+
+            }
+            else
+            {
+                lb_completed.Clear();
+            }
+        }
+
+        private void btnC_Uncomplete_Click(object sender, EventArgs e)
+        {
+            uncompleteToDo();
         }
     }
 }

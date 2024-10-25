@@ -32,6 +32,7 @@
             this.styleManager1 = new MetroSet_UI.Components.StyleManager();
             this.mainTabs = new MetroSet_UI.Controls.MetroSetTabControl();
             this.mainToDo = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.btn_clearlb1 = new MetroSet_UI.Controls.MetroSetButton();
             this.metroSetLabel2 = new MetroSet_UI.Controls.MetroSetLabel();
             this.metroSetLabel1 = new MetroSet_UI.Controls.MetroSetLabel();
             this.btn_edittodo = new MetroSet_UI.Controls.MetroSetButton();
@@ -42,13 +43,17 @@
             this.btn_addTodo = new MetroSet_UI.Controls.MetroSetButton();
             this.lb_todo1 = new MetroSet_UI.Controls.MetroSetListBox();
             this.completedToDos = new MetroSet_UI.Child.MetroSetSetTabPage();
+            this.lbl_complete1 = new MetroSet_UI.Controls.MetroSetLabel();
+            this.btnC_ClearC = new MetroSet_UI.Controls.MetroSetButton();
+            this.btnC_Uncomplete = new MetroSet_UI.Controls.MetroSetButton();
+            this.lb_completed = new MetroSet_UI.Controls.MetroSetListBox();
             this.prefpanel = new MetroSet_UI.Child.MetroSetSetTabPage();
             this.mtd_helper = new MetroSet_UI.Controls.MetroSetLabel();
-            this.lb_completed = new MetroSet_UI.Controls.MetroSetListBox();
-            this.btn_clearlb1 = new MetroSet_UI.Controls.MetroSetButton();
+            this.metroSetLabel3 = new MetroSet_UI.Controls.MetroSetLabel();
             this.mainTabs.SuspendLayout();
             this.mainToDo.SuspendLayout();
             this.completedToDos.SuspendLayout();
+            this.prefpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroSetControlBox1
@@ -94,7 +99,7 @@
             this.mainTabs.Controls.Add(this.mainToDo);
             this.mainTabs.Controls.Add(this.completedToDos);
             this.mainTabs.Controls.Add(this.prefpanel);
-            this.mainTabs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mainTabs.Cursor = System.Windows.Forms.Cursors.Default;
             this.mainTabs.IsDerivedStyle = true;
             this.mainTabs.ItemSize = new System.Drawing.Size(100, 38);
             this.mainTabs.Location = new System.Drawing.Point(15, 98);
@@ -139,6 +144,33 @@
             this.mainToDo.ThemeAuthor = "Narwin";
             this.mainToDo.ThemeName = "MetroDark";
             this.mainToDo.ToolTipText = null;
+            // 
+            // btn_clearlb1
+            // 
+            this.btn_clearlb1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btn_clearlb1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btn_clearlb1.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btn_clearlb1.Font = new System.Drawing.Font("Segoe WP Light", 10F);
+            this.btn_clearlb1.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btn_clearlb1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btn_clearlb1.HoverTextColor = System.Drawing.Color.White;
+            this.btn_clearlb1.IsDerivedStyle = true;
+            this.btn_clearlb1.Location = new System.Drawing.Point(465, 307);
+            this.btn_clearlb1.Name = "btn_clearlb1";
+            this.btn_clearlb1.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btn_clearlb1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btn_clearlb1.NormalTextColor = System.Drawing.Color.White;
+            this.btn_clearlb1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btn_clearlb1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btn_clearlb1.PressTextColor = System.Drawing.Color.White;
+            this.btn_clearlb1.Size = new System.Drawing.Size(180, 32);
+            this.btn_clearlb1.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btn_clearlb1.StyleManager = null;
+            this.btn_clearlb1.TabIndex = 8;
+            this.btn_clearlb1.Text = "Clear ToDo List";
+            this.btn_clearlb1.ThemeAuthor = "Narwin";
+            this.btn_clearlb1.ThemeName = "MetroDark";
+            this.btn_clearlb1.Click += new System.EventHandler(this.btn_clearlb1_Click);
             // 
             // metroSetLabel2
             // 
@@ -352,6 +384,9 @@
             // completedToDos
             // 
             this.completedToDos.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.completedToDos.Controls.Add(this.lbl_complete1);
+            this.completedToDos.Controls.Add(this.btnC_ClearC);
+            this.completedToDos.Controls.Add(this.btnC_Uncomplete);
             this.completedToDos.Controls.Add(this.lb_completed);
             this.completedToDos.Font = null;
             this.completedToDos.ImageIndex = 0;
@@ -368,9 +403,107 @@
             this.completedToDos.ThemeName = "MetroDark";
             this.completedToDos.ToolTipText = null;
             // 
+            // lbl_complete1
+            // 
+            this.lbl_complete1.Font = new System.Drawing.Font("Segoe WP Light", 10F);
+            this.lbl_complete1.IsDerivedStyle = true;
+            this.lbl_complete1.Location = new System.Drawing.Point(462, 19);
+            this.lbl_complete1.Name = "lbl_complete1";
+            this.lbl_complete1.Size = new System.Drawing.Size(144, 23);
+            this.lbl_complete1.Style = MetroSet_UI.Enums.Style.Dark;
+            this.lbl_complete1.StyleManager = this.styleManager1;
+            this.lbl_complete1.TabIndex = 10;
+            this.lbl_complete1.Text = "Manage Completed";
+            this.lbl_complete1.ThemeAuthor = "Narwin";
+            this.lbl_complete1.ThemeName = "MetroDark";
+            // 
+            // btnC_ClearC
+            // 
+            this.btnC_ClearC.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_ClearC.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_ClearC.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnC_ClearC.Font = new System.Drawing.Font("Segoe WP Light", 10F);
+            this.btnC_ClearC.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnC_ClearC.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnC_ClearC.HoverTextColor = System.Drawing.Color.White;
+            this.btnC_ClearC.IsDerivedStyle = true;
+            this.btnC_ClearC.Location = new System.Drawing.Point(462, 83);
+            this.btnC_ClearC.Name = "btnC_ClearC";
+            this.btnC_ClearC.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_ClearC.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_ClearC.NormalTextColor = System.Drawing.Color.White;
+            this.btnC_ClearC.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnC_ClearC.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnC_ClearC.PressTextColor = System.Drawing.Color.White;
+            this.btnC_ClearC.Size = new System.Drawing.Size(180, 32);
+            this.btnC_ClearC.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btnC_ClearC.StyleManager = null;
+            this.btnC_ClearC.TabIndex = 9;
+            this.btnC_ClearC.Text = "Clear Completed";
+            this.btnC_ClearC.ThemeAuthor = "Narwin";
+            this.btnC_ClearC.ThemeName = "MetroDark";
+            this.btnC_ClearC.Click += new System.EventHandler(this.btnC_ClearC_Click);
+            // 
+            // btnC_Uncomplete
+            // 
+            this.btnC_Uncomplete.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_Uncomplete.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_Uncomplete.DisabledForeColor = System.Drawing.Color.Gray;
+            this.btnC_Uncomplete.Font = new System.Drawing.Font("Segoe WP Light", 10F);
+            this.btnC_Uncomplete.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnC_Uncomplete.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
+            this.btnC_Uncomplete.HoverTextColor = System.Drawing.Color.White;
+            this.btnC_Uncomplete.IsDerivedStyle = true;
+            this.btnC_Uncomplete.Location = new System.Drawing.Point(462, 45);
+            this.btnC_Uncomplete.Name = "btnC_Uncomplete";
+            this.btnC_Uncomplete.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_Uncomplete.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnC_Uncomplete.NormalTextColor = System.Drawing.Color.White;
+            this.btnC_Uncomplete.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnC_Uncomplete.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
+            this.btnC_Uncomplete.PressTextColor = System.Drawing.Color.White;
+            this.btnC_Uncomplete.Size = new System.Drawing.Size(180, 32);
+            this.btnC_Uncomplete.Style = MetroSet_UI.Enums.Style.Custom;
+            this.btnC_Uncomplete.StyleManager = null;
+            this.btnC_Uncomplete.TabIndex = 8;
+            this.btnC_Uncomplete.Text = "Uncomplete ToDo";
+            this.btnC_Uncomplete.ThemeAuthor = "Narwin";
+            this.btnC_Uncomplete.ThemeName = "MetroDark";
+            this.btnC_Uncomplete.Click += new System.EventHandler(this.btnC_Uncomplete_Click);
+            // 
+            // lb_completed
+            // 
+            this.lb_completed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.lb_completed.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lb_completed.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.lb_completed.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.lb_completed.Font = new System.Drawing.Font("Segoe WP Light", 10F);
+            this.lb_completed.HoveredItemBackColor = System.Drawing.Color.LightGray;
+            this.lb_completed.HoveredItemColor = System.Drawing.Color.DimGray;
+            this.lb_completed.IsDerivedStyle = true;
+            this.lb_completed.ItemHeight = 30;
+            this.lb_completed.Location = new System.Drawing.Point(0, -1);
+            this.lb_completed.MultiSelect = false;
+            this.lb_completed.Name = "lb_completed";
+            this.lb_completed.SelectedIndex = -1;
+            this.lb_completed.SelectedItem = null;
+            this.lb_completed.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.lb_completed.SelectedItemColor = System.Drawing.Color.White;
+            this.lb_completed.SelectedText = null;
+            this.lb_completed.SelectedValue = null;
+            this.lb_completed.ShowBorder = false;
+            this.lb_completed.ShowScrollBar = false;
+            this.lb_completed.Size = new System.Drawing.Size(456, 343);
+            this.lb_completed.Style = MetroSet_UI.Enums.Style.Dark;
+            this.lb_completed.StyleManager = this.styleManager1;
+            this.lb_completed.TabIndex = 1;
+            this.lb_completed.ThemeAuthor = "Narwin";
+            this.lb_completed.ThemeName = "MetroDark";
+            // 
             // prefpanel
             // 
             this.prefpanel.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.prefpanel.Controls.Add(this.metroSetLabel3);
             this.prefpanel.Font = null;
             this.prefpanel.ImageIndex = 0;
             this.prefpanel.ImageKey = null;
@@ -403,61 +536,19 @@
             this.mtd_helper.ThemeName = "MetroDark";
             this.mtd_helper.DoubleClick += new System.EventHandler(this.showAbout);
             // 
-            // lb_completed
+            // metroSetLabel3
             // 
-            this.lb_completed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.lb_completed.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lb_completed.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.lb_completed.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.lb_completed.Font = new System.Drawing.Font("Segoe WP Light", 10F);
-            this.lb_completed.HoveredItemBackColor = System.Drawing.Color.LightGray;
-            this.lb_completed.HoveredItemColor = System.Drawing.Color.DimGray;
-            this.lb_completed.IsDerivedStyle = true;
-            this.lb_completed.ItemHeight = 30;
-            this.lb_completed.Location = new System.Drawing.Point(0, -1);
-            this.lb_completed.MultiSelect = false;
-            this.lb_completed.Name = "lb_completed";
-            this.lb_completed.SelectedIndex = -1;
-            this.lb_completed.SelectedItem = null;
-            this.lb_completed.SelectedItemBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.lb_completed.SelectedItemColor = System.Drawing.Color.White;
-            this.lb_completed.SelectedText = null;
-            this.lb_completed.SelectedValue = null;
-            this.lb_completed.ShowBorder = false;
-            this.lb_completed.ShowScrollBar = false;
-            this.lb_completed.Size = new System.Drawing.Size(456, 343);
-            this.lb_completed.Style = MetroSet_UI.Enums.Style.Dark;
-            this.lb_completed.StyleManager = this.styleManager1;
-            this.lb_completed.TabIndex = 1;
-            this.lb_completed.ThemeAuthor = "Narwin";
-            this.lb_completed.ThemeName = "MetroDark";
-            // 
-            // btn_clearlb1
-            // 
-            this.btn_clearlb1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btn_clearlb1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btn_clearlb1.DisabledForeColor = System.Drawing.Color.Gray;
-            this.btn_clearlb1.Font = new System.Drawing.Font("Segoe WP Light", 10F);
-            this.btn_clearlb1.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btn_clearlb1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
-            this.btn_clearlb1.HoverTextColor = System.Drawing.Color.White;
-            this.btn_clearlb1.IsDerivedStyle = true;
-            this.btn_clearlb1.Location = new System.Drawing.Point(465, 307);
-            this.btn_clearlb1.Name = "btn_clearlb1";
-            this.btn_clearlb1.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btn_clearlb1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
-            this.btn_clearlb1.NormalTextColor = System.Drawing.Color.White;
-            this.btn_clearlb1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btn_clearlb1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
-            this.btn_clearlb1.PressTextColor = System.Drawing.Color.White;
-            this.btn_clearlb1.Size = new System.Drawing.Size(180, 32);
-            this.btn_clearlb1.Style = MetroSet_UI.Enums.Style.Custom;
-            this.btn_clearlb1.StyleManager = null;
-            this.btn_clearlb1.TabIndex = 8;
-            this.btn_clearlb1.Text = "Clear ToDo List";
-            this.btn_clearlb1.ThemeAuthor = "Narwin";
-            this.btn_clearlb1.ThemeName = "MetroDark";
-            this.btn_clearlb1.Click += new System.EventHandler(this.btn_clearlb1_Click);
+            this.metroSetLabel3.Font = new System.Drawing.Font("Segoe WP Light", 10F);
+            this.metroSetLabel3.IsDerivedStyle = true;
+            this.metroSetLabel3.Location = new System.Drawing.Point(0, 10);
+            this.metroSetLabel3.Name = "metroSetLabel3";
+            this.metroSetLabel3.Size = new System.Drawing.Size(265, 23);
+            this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Dark;
+            this.metroSetLabel3.StyleManager = this.styleManager1;
+            this.metroSetLabel3.TabIndex = 11;
+            this.metroSetLabel3.Text = "Preferences unavailable on Beta releases";
+            this.metroSetLabel3.ThemeAuthor = "Narwin";
+            this.metroSetLabel3.ThemeName = "MetroDark";
             // 
             // MainUI
             // 
@@ -481,6 +572,7 @@
             this.mainTabs.ResumeLayout(false);
             this.mainToDo.ResumeLayout(false);
             this.completedToDos.ResumeLayout(false);
+            this.prefpanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -505,6 +597,10 @@
         private MetroSet_UI.Controls.MetroSetLabel mtd_helper;
         private MetroSet_UI.Controls.MetroSetButton btn_clearlb1;
         private MetroSet_UI.Controls.MetroSetListBox lb_completed;
+        private MetroSet_UI.Controls.MetroSetLabel lbl_complete1;
+        private MetroSet_UI.Controls.MetroSetButton btnC_ClearC;
+        private MetroSet_UI.Controls.MetroSetButton btnC_Uncomplete;
+        private MetroSet_UI.Controls.MetroSetLabel metroSetLabel3;
     }
 }
 
